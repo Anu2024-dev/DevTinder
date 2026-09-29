@@ -1,0 +1,19 @@
+{
+  "name": "devtinder_backend",
+  "version": "1.0.0",
+  "description": "devtinder for developers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [
+    "Nodejs",
+    "JavaScript"
+  ],
+  "author": "Chetana Saha",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
