@@ -1,20 +1,27 @@
 const express = require("express");
 const app = express();
-//this wil only handle get call to /user;
-//actually how to write middleware for standard
-const { authAdmin, userAuth } = require("./Middlewares/auth");
-app.use("/admin", authAdmin);
-app.get("/admin/getAllData", (req, res) => {
-  res.send("All data fetched");
+//wildcard error handlers and its order
+app.use("/", (err, req, res, next) => {
+  //Log your errors
+  if (err) {
+    res.status(500).send("something went wrong");
+  }
 });
-app.delete("/admin/deleteData", (req, res) => {
-  res.send("delete req for data sent");
+app.get("/user", (req, res) => {
+  //res.send("user data fetched");
+  throw new Error("fghj");
+  try {
+    throw new Error("fghj");
+    res.send("user data fetched");
+  } catch (err) {
+    res.status(500).send("contact with support team");
+  }
 });
-app.get("/user/login", (req, res) => {
-  res.send("user Login");
-});
-app.get("/user/data", userAuth, (req, res) => {
-  res.send("user data fetched");
+app.use("/", (err, req, res, next) => {
+  //Log your errors
+  if (err) {
+    res.status(500).send("something went wrong");
+  }
 });
 app.listen(3000, () => {
   console.log("Server is Successfully listning on port 3000...");
